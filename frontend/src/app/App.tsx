@@ -3,6 +3,16 @@ import { Search, Plane, MapPin, ListFilter, Plus, ArrowLeft } from "lucide-react
 import { DestinationCard } from "./components/DestinationCard";
 import { Input } from "./components/ui/input";
 import { Button } from "./components/ui/button";
+import {
+  Dialog,
+  DialogTrigger,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+  DialogFooter,
+  DialogClose,
+} from "./components/ui/dialog";
 import { Tabs, TabsList, TabsTrigger } from "./components/ui/tabs";
 import { TripPlanner } from "./components/TripPlanner";
 import { TripCard, Trip } from "./components/TripCard";
@@ -154,6 +164,8 @@ function App() {
   const [viewMode, setViewMode] = useState<ViewMode>("home");
   const [trips, setTrips] = useState<Trip[]>([]);
   const [selectedTrip, setSelectedTrip] = useState<Trip | null>(null);
+  const [user, setUser] = useState<string | null>(null);
+  const [signInOpen, setSignInOpen] = useState(false);
 
   const filteredDestinations = destinations.filter((dest) => {
     const matchesSearch =
@@ -269,7 +281,57 @@ function App() {
                 About
               </a>
             </nav>
-            <Button className="bg-blue-600 hover:bg-blue-700">Sign In</Button>
+            {user ? (
+              <div className="flex items-center gap-2">
+                <span className="text-sm text-gray-700">Hi, {user}</span>
+                <Button
+                  className="bg-blue-600 hover:bg-blue-700"
+                  onClick={() => {
+                    setUser(null);
+                    toast.success("Signed out");
+                  }}
+                >
+                  Sign Out
+                </Button>
+              </div>
+            ) : (
+              <Dialog open={signInOpen} onOpenChange={setSignInOpen}>
+                <DialogTrigger asChild>
+                  <Button className="bg-blue-600 hover:bg-blue-700">Sign In</Button>
+                </DialogTrigger>
+                <DialogContent>
+                  <DialogHeader>
+                    <DialogTitle>Sign in to TravelExplore</DialogTitle>
+                    <DialogDescription>Enter your email to sign in (demo)</DialogDescription>
+                  </DialogHeader>
+
+                  <form
+                    onSubmit={(e) => {
+                      e.preventDefault();
+                      const form = e.target as HTMLFormElement;
+                      const data = new FormData(form);
+                      const email = (data.get("email") as string) || "user";
+                      const display = email.split("@")[0];
+                      setUser(display);
+                      setSignInOpen(false);
+                      toast.success(`Signed in as ${display}`);
+                    }}
+                  >
+                    <div className="grid gap-2 py-4">
+                      <Input name="email" type="email" placeholder="you@example.com" required />
+                      <Input name="password" type="password" placeholder="Password" required />
+                    </div>
+                    <DialogFooter>
+                      <DialogClose asChild>
+                        <Button type="submit" className="bg-blue-600 hover:bg-blue-700">
+                          Sign In
+                        </Button>
+                      </DialogClose>
+                    </DialogFooter>
+                  </form>
+                </DialogContent>
+              </Dialog>
+            )}
           </div>
         </div>
       </header>
