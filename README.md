@@ -1,55 +1,29 @@
-🧭 Globetrotter
+# 🌍 Globetrotter
+Globetrotter is a full-stack travel planning application that helps users plan, organize, and manage trips efficiently. The project is structured with a clear separation of frontend and backend to support scalability, maintainability, and real-world deployment.
 
-The travel app project — backend + frontend starter template.
-Barebones setup for a travel app called Globetrotter with separate backend and frontend folders.
+## 📂 Project Structure
+Globetrotter/
+├── frontend/  # React + TypeScript client
+├── backend/   # Python-based backend API
+├── instance/  # Configuration / instance files
+└── README.md
 
-🚀 What’s This?
+## 🚀 Features
+- User authentication using JWT
+- Create, update, and manage trips
+- Build travel itineraries
+- Budget tracking for trips
+- Calendar-based trip overview
+- REST API-based backend
+- Modular and scalable frontend architecture
 
-This repo has:
+## 🛠️ Tech Stack
+Frontend: React, TypeScript, Vite, Axios, React Router  
+Backend: Python, REST API, JWT Authentication  
+Tools: Git, npm, pip
 
-💻 Frontend — likely a TypeScript/React app (based on detected languages). 
-GitHub
-
-🛠️ Backend — Python server (maybe FastAPI/Django/Flask). 
-GitHub
-
-🪪 Instance folder — configs or deployment stuff. 
-GitHub
-
-No docs currently, so you’ll have to define setup rules yourself.
-
-📦 Prerequisites
-
-Make sure you have installed:
-
-Node.js & npm/yarn
-
-Python 3.x
-
-Git
-
-📍 Setup Instructions
-🔹 Frontend
-cd frontend
-npm install
-npm start
-
-
-Runs the web app on localhost (default port 3000).
-
-🔹 Backend
-cd backend
-pip install -r requirements.txt
-# run server (example)
-python app.py
-
-
-Adjust according to framework used.
-
-🧪 Testing
-
-Add tests if you want — there’s none included.
-
-🔧 Deployment
-
-Add your deploy scripts later (Netlify/Vercel for frontend, Heroku/Docker for backend).
+## ⚙️ Installation & Setup
+Clone the repository:
+```bash
+git clone https://github.com/kathiravanagit/Globetrotter.git
+cd Globetrotter
