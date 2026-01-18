@@ -8,21 +8,6 @@ Globetrotter/
 ├── instance/  # Configuration / instance files
 └── README.md
 
-## 🚀 Features
-- User authentication using JWT
-- Create, update, and manage trips
-- Build travel itineraries
-- Budget tracking for trips
-- Calendar-based trip overview
-- REST API-based backend
-- Modular and scalable frontend architecture
-
-## 🛠️ Tech Stack
-Frontend: React, TypeScript, Vite, Axios, React Router  
-Backend: Python, REST API, JWT Authentication  
-Tools: Git, npm, pip
-
-## ⚙️ Installation & Setup
 Clone the repository:
 ```bash
 git clone https://github.com/kathiravanagit/Globetrotter.git
